@@ -1,24 +1,50 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import React from 'react';
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
+const StackLayout = () => {
+  return (
+    <Stack>
+      <Stack.Screen
+        name="index" // Corresponds to app/index.tsx
+        options={{
+          title: 'Mi Lista de Tareas',
+          headerStyle: {
+            backgroundColor: '#8a2be2', // Violet header
+          },
+          headerTintColor: '#fff', // White text
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="calendar" // Corresponds to app/calendar.tsx
+        options={{
+          title: 'Calendario',
+          headerStyle: {
+            backgroundColor: '#8a2be2',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="deleted" // Corresponds to app/deleted.tsx
+        options={{
+          title: 'Tareas Eliminadas',
+          headerStyle: {
+            backgroundColor: '#8a2be2',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
+    </Stack>
+  );
 };
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
-}
+export default StackLayout;
