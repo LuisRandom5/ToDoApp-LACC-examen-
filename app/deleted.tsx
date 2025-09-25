@@ -78,19 +78,26 @@ const DeletedScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Tareas Eliminadas</Text>
       <FlatList
         data={tasks.filter(task => task.deleted)}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         style={styles.taskList}
         ListEmptyComponent={<Text style={styles.emptyListText}>No hay tareas eliminadas.</Text>}
-      <Text style={styles.title}>Tareas Eliminadas</Text>
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 10,
+    color: '#4a4a4a',
+  },
   container: {
     flex: 1,
     backgroundColor: '#f0e4f7', // Light violet background
